@@ -40,13 +40,18 @@ async function handleRequest(request) {
   }
 }
 
-// EdgeOne Pages 风格（context.request）
+// for EdgeOne Pages
 export async function onRequest(context) {
   return handleRequest(context.request);
 }
 
-// Netlify Edge Functions 风格（request, env, context）
+// for Netlify Functions
 export default async function handler(request, env, context) {
+  return await handleRequest(request);
+}
+
+// for Aliyun ESA
+export default async function fetch(request, env, context) {
   return await handleRequest(request);
 }
 
