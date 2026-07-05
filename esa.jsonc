@@ -1,6 +1,6 @@
 {
   "name": "bingwallpaper-function",
-  "entry": "./edge-functions/index.js",
+  "entry": "./edge-functions/aliyunesa.js",
   "installCommand": "",
   "buildCommand": "",
   "assets": {

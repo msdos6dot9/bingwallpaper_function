@@ -1,7 +1,7 @@
 // JS 版本的 API：从必应获取今日壁纸并返回图片流
 // 适用于 Tencent EdgeOne Maker Functions / Netlify 等 serverless 环境
 
-async function handleRequest(request) {
+export async function handleRequest(request) {
   try {
     const xmlRes = await fetch('https://cn.bing.com/HPImageArchive.aspx?idx=0&n=1');
     const str = await xmlRes.text();
@@ -50,10 +50,7 @@ export default async function handler(request, env, context) {
   return await handleRequest(request);
 }
 
-// for Aliyun ESA
-export async function fetch(request, env, context) {
-  return await handleRequest(request);
-}
+
 
 // 额外：兼容 Node 风格的 handler（适用于某些 Maker 平台的 adapter）
 // signature: (req, res)
