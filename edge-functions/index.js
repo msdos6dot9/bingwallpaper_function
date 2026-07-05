@@ -1,5 +1,5 @@
-// JS 版本的 API：从必应获取今日壁纸并返回图片流
-// 适用于 Tencent EdgeOne Maker Functions / Netlify 等 serverless 环境
+// 从必应获取今日壁纸并返回图片流 (Serverless ver.)
+// 适用于 EdgeOne Pages / Aliyun ESA Pages / Netlify 等 serverless 环境
 
 export async function handleRequest(request) {
   try {
@@ -48,28 +48,6 @@ export async function onRequest(context) {
 // for Netlify Functions
 export default async function handler(request, env, context) {
   return await handleRequest(request);
-}
-
-
-
-// 额外：兼容 Node 风格的 handler（适用于某些 Maker 平台的 adapter）
-// signature: (req, res)
-export async function nodeHandler(req, res) {
-  try {
-    const url = req.url || '/';
-    const method = req.method || 'GET';
-    const headers = req.headers || {};
-    const request = new Request(url, { method, headers });
-    const response = await handleRequest(request);
-
-    res.statusCode = response.status;
-    response.headers.forEach((v, k) => res.setHeader(k, v));
-    const buf = Buffer.from(await response.arrayBuffer());
-    res.end(buf);
-  } catch (err) {
-    res.statusCode = 500;
-    res.end('Internal Server Error');
-  }
 }
 
 export const config = {
