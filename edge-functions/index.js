@@ -51,7 +51,7 @@ export default async function handler(request, env, context) {
 }
 
 // for Aliyun ESA
-export default async function fetch(request, env, context) {
+export async function fetch(request, env, context) {
   return await handleRequest(request);
 }
 
