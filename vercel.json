@@ -6,8 +6,8 @@
   },
     "rewrites": [
         {
-             "source": "/api/:match*", 
-             "destination": "/:match*" 
+             "source": "/api", 
+             "destination": "/" 
         }
     ]
 }
