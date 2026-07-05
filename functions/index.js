@@ -4,7 +4,3 @@ import { handleRequest } from '../edge-functions/index.js';
 export async function onRequest(context) {
   return await handleRequest(context.request);
 }
-
-// export function onRequest(context) {
-//   return new Response("Hello, world!");
-// }
